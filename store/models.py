@@ -12,7 +12,7 @@ class Category(models.Model):
 class Customer(models.Model):
     first_name = models.CharField (max_length= 50)
     last_name = models.CharField (max_length= 50)
-    phone = models.IntegerField (max_length= 15)
+    phone = models.IntegerField ()
     email = models.EmailField (max_length= 30)
     password =models.CharField(max_length=100)
 
@@ -22,7 +22,7 @@ class Customer(models.Model):
 
 class Product(models.Model):
     name =models.CharField (max_length= 50)
-    price = models.IntegerField (default = 0, max_length = 6)
+    price = models.IntegerField (default = 0)
     image = models.ImageField(upload_to='uploads/product/')
     category = models.ForeignKey (Category, on_delete=models.CASCADE, default = 1)
     description = models.CharField (max_length= 250, blank=True, default='', null=True)
@@ -36,7 +36,7 @@ class Order(models.Model):
     customer =models.ForeignKey(Customer,  on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
     address = models.CharField(max_length= 50,blank=True, default='')
-    phone = models.IntegerField (max_length= 15,blank=True, default='')
+    phone = models.IntegerField (blank=True, default='')
     date = models.DateTimeField(default= datetime.datetime.today)
     stauts = models.BooleanField(default=False)
 
