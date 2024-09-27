@@ -27,6 +27,9 @@ class Product(models.Model):
     category = models.ForeignKey (Category, on_delete=models.CASCADE, default = 1)
     description = models.CharField (max_length= 250, blank=True, default='', null=True)
 
+    #add sales stuffs
+    is_sales = models.BooleanField(default=False)
+    sales_price = models.IntegerField (default = 0)
 
     def __str__(self):
         return self.name
