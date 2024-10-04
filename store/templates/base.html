@@ -17,7 +17,13 @@
     <body>
        {% include 'navbar.html' %}
         <!-- Header-->
-        
+        {% if messages %}
+
+        {% for message in messages%}
+
+        {% endfor%}
+
+        {%endif%}
         {% block content%}
         {% endblock%}
         <!-- Footer-->
