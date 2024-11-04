@@ -34,4 +34,4 @@ def logout_user(request):
 
 
 def register_user(request):
-    return redirect()
+    return redirect(request, 'register.html')
