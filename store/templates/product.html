@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}
+
+<div class="container">
+    <br/>
+
+    <div class="card mb-3" >
+        <div class="row g-0">
+          <div class="col-md-3">
+            <img class="img-fluid rounded-start" src="{{ product.image.url }}" alt="...">
+          </div>
+          <div class="col-md-6">
+            <div class="card-body">
+                <center>
+                <h5 class="card-title">{{ product.name}}</h5>
+                <p class="card-text">{{ product.description}}</p>
+                <p class="card-text">Ksh {{product.price}}</p>
+                <a href="{% url 'home'%}" class="btn btn-secondary">Back</a>
+                </center>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/>
+{% endblock %}
