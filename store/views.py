@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from .form import*
 from django.contrib.auth.forms import UserCreationForm
-from django import form
+# from django import form
 
 
 # Create your views here.
@@ -39,18 +39,18 @@ def logout_user(request):
 
 def register_user(request):
     form = SignUpForm()
-    if request.method =="POST":
+    if request.method == "POST":
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.changed_data['username']
-            password = form.changed_data['password']
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
             #log in user 
             user = authenticate(username = username, password = password)
             login(request,user)
-            return redirect('register')
-        else:
-            messages.success(request("Whoops, There was a problem, Please try again"))
             return redirect('home')
+        else:
+            # messages.success(request("Whoops, There was a problem, Please try again"))
+            return redirect('register')
     else:
-        return render(request, 'register.html')
+        return render(request, 'register.html', {'form': form})
