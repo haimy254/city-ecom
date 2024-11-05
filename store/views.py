@@ -21,7 +21,7 @@ def category(request,foo):
         #look up the category
         category = Category.objects.get(name=foo)
         products = Product.objects.filter(category=category)
-        return render(request, category.html, {'products':products, 'category': category})
+        return render(request, 'category.html', {'products':products, 'category': category})
     except:
         return redirect('home')
     
