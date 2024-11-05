@@ -13,6 +13,19 @@ def home(request):
     products = Product.objects.all()
     return render(request,'home.html',{'products': products})
 
+def category(request,foo):
+    #replace gyphens with space
+    foo = foo.replace('-',' ')
+
+    try:
+        #look up the category
+        category = Category.objects.get(name=foo)
+        products = Product.objects.filter(category=category)
+        return render(request, category.html, {'products':products, 'category': category})
+    except:
+        return redirect('home')
+    
+
 def product(request,pk):
     product = Product.objects.get(id=pk)
     return render(request,'product.html',{'product': product})
