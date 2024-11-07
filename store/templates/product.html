@@ -17,6 +17,7 @@
                 <p class="card-text">{{ product.description}}</p>
                 <p class="card-text">Ksh {{product.price}}</p>
                 <a href="{% url 'home'%}" class="btn btn-secondary">Back</a>
+                <button type="button"value="{{product.id}}" class="btn btn-primary" id="add-cart">Add To Cart</button>
                 </center>
             </div>
           </div>
@@ -24,5 +25,21 @@
       </div>
 </div>
 <br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<br/>
+
+<script>
+  // check if button is pressed
+  $(document). on('click', '#add-cart',function(e){
+    e.preventDefault();
+    $.ajax({
+      type : 'POST',
+      url : '{% url 'cart_add' %}',
+      data :{
+        product_id : $('add-cart').val(),
+        csrfmiddlewaretoke: '{{csrf_token}}',
+        action : 'post'
+      }
+    });
+  })
+</script>
+
 {% endblock %}
