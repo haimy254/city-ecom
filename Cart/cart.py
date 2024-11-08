@@ -13,3 +13,10 @@ class Cart():
 
         #make sure cart is available in all the pages of the site
         self.cart = cart
+
+
+    def add(self,product):
+        product_id = str(product_id)
+
+        if product_id in self.cat:
+            pass

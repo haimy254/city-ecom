@@ -37,6 +37,12 @@
         product_id : $('add-cart').val(),
         csrfmiddlewaretoke: '{{csrf_token}}',
         action : 'post'
+      },
+      success:function (json){
+        console.log(json)
+      },
+      error : function(errmsg, xhr, err){
+        
       }
     });
   })
