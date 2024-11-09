@@ -39,7 +39,8 @@
         action : 'post'
       },
       success:function (json){
-        console.log(json)
+        // console.log(json)
+        document.getElementById("cart_quantity").textContent = json.qty
       },
       error : function(errmsg, xhr, err){
         

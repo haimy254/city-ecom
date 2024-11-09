@@ -12,7 +12,7 @@ def cart_summery(request):
 def cart_add(request):
 
     #get the cart
-    cart= Cart(request)
+    cart = Cart(request)
 
     #test for post
     if request.POST.get('action') =='post':
@@ -22,9 +22,13 @@ def cart_add(request):
         product = get_object_or_404(Product, id=product_id)
 
         #save the session
-        cart.add(product= product)
+        cart.add(product = product)
 
-        response = JsonResponse({'Product Name': product.name})
+        #get the quantity
+        cart_quantity = cart.__len__()
+
+        # response = JsonResponse({'Product Name': product.name})
+        response = JsonResponse({'qty': cart_quantity})
         return response
   
 
