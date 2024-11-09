@@ -16,7 +16,7 @@ def cart_add(request):
 
     #test for post
     if request.POST.get('action') =='post':
-        product_id = str(request.POST.get('product_id'))
+        product_id = int(request.POST.get('product_id'))
 
         #lookup the product
         product = get_object_or_404(Product, id=product_id)
